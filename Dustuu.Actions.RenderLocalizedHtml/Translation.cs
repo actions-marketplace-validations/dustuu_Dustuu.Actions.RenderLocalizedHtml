@@ -1,6 +1,6 @@
 ﻿namespace Dustuu.Actions.BunnyCdnDeploy;
 
-public record Translations
+public record Translation
 {
     public required string DefaultCulture { get; init; }
 

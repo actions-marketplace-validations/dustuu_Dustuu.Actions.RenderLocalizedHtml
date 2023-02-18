@@ -7,8 +7,14 @@ inputs:
   workspace:
     description: 'The workspace directory.'
     default: '/github/workspace'
-  directory:
-    description: 'The root directory to upload from (relative to workspace). Example, "path/to/build/artifacts".'
+  translation:
+    description: 'The .json file to use for translation (relative to workspace). Example, "translations.json".'
+    required: true
+  input:
+    description: 'The directory to localize from (relative to workspace). Example, "path/to/source".'
+    required: true
+  output:
+    description: 'The directory to localize into (relative to workspace). Example, "path/to/destination".'
     required: true
 
 runs:
@@ -17,5 +23,9 @@ runs:
   args:
   - '-w'
   - ${{ inputs.workspace }}
-  - '-d'
-  - ${{ inputs.directory }}
+  - '-t'
+  - ${{ inputs.translation }}
+  - '-i'
+  - ${{ inputs.input }}
+  - '-o'
+  - ${{ inputs.output }}
