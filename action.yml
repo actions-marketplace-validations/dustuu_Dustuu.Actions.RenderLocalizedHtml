@@ -1,0 +1,21 @@
+name: 'Render Localized HTML'
+description: 'WIP action for rendering localized HTML files'
+branding:
+  icon: globe
+  color: blue
+inputs:
+  workspace:
+    description: 'The workspace directory.'
+    default: '/github/workspace'
+  directory:
+    description: 'The root directory to upload from (relative to workspace). Example, "path/to/build/artifacts".'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - '-w'
+  - ${{ inputs.workspace }}
+  - '-d'
+  - ${{ inputs.directory }}
