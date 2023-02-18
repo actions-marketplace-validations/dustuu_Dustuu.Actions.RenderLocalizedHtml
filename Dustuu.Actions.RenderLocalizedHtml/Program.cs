@@ -119,8 +119,6 @@ internal partial class Program
         {
             string translation = idToTranslation[id];
 
-            Log($"Replacing {culture.Name}: '{id}' => {translation}...");
-
             string xPath = $"//*[@id='{id}']/text()";
             HtmlNodeCollection textNodes = cultureHtmlDoc.DocumentNode.SelectNodes(xPath);
             if (textNodes is null)
@@ -131,10 +129,14 @@ internal partial class Program
 
             foreach (HtmlTextNode node in textNodes.Cast<HtmlTextNode>())
             {
+                Log($"Replacing {culture.Name}: <{node.NodeType} id='{id}'/> => {translation}...");
                 node.Text = translation;
             }
         }
 
+        Log("----------");
+        cultureHtmlDoc.Save(Console.OpenStandardOutput());
+        Log("----------");
         cultureHtmlDoc.Save(cultureHtml.FullName);
     }
 }
