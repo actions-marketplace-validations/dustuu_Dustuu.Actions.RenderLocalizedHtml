@@ -4,7 +4,7 @@ internal class Samples
 {
     private static readonly Translations _defaultTranslations = new()
     {
-        DefaultLanguage = "en-US",
+        DefaultCulture = "en-US",
         Ids = new Dictionary<string, Dictionary<string, string>>()
         {
             {
